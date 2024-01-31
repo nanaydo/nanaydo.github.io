@@ -1,6 +1,7 @@
 .image-container {
   width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
-  margin-left: 20px;
+  margin-left: 30px; /* Ajusta el margen izquierdo para separar más la imagen del texto */
+  margin-right: 10px; /* Ajusta el margen derecho para separar la imagen del número */
   flex-shrink: 0; /* Evita que la imagen se contraiga */
 }
 
