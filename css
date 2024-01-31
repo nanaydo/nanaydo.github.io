@@ -1,9 +1,10 @@
 .image-container {
   width: 100px; /* Ajusta el tamaño de la imagen según sea necesario */
+  margin-left: 20px;
   flex-shrink: 0; /* Evita que la imagen se contraiga */
 }
 
 .img-fluid {
-  max-width: 80%; /* Asegura que la imagen no se desborde del contenedor */
+  max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
   height: auto; /* Mantiene la proporción de aspecto */
 }
