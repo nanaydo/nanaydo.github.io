@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clone.querySelector("[data-id='title']").textContent = "NAME: Rick Sanchez";
         clone.querySelector("[data-id='status']").textContent = "STATUS: Vivo";
         clone.querySelector("[data-id='species']").textContent = "SPECIES: Humano";
-        clone.querySelector("[data-id='image']").src = "https://elcomercio.pe/resizer/4WQWP7E1GEiSxQgSDeKSaLYa0eo=/580x330/smart/filters:format(jpeg):quality(90)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/KRKOINCP7JGR7KWT4HNBDSJPDA.jpg"; 
+        clone.querySelector("[data-id='image']").src = "https://hips.hearstapps.com/hmg-prod/images/rick-and-morty-image-1662104014.jpg?crop=0.315xw:0.560xh;0.351xw,0.168xh&resize=980:*"; 
         itemList.appendChild(clone);
     });
 
