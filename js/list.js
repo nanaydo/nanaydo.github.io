@@ -6,12 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var clone = template.content.cloneNode(true);
         clone.querySelector("[data-id='number']").textContent = `${total}`;
         clone.querySelector("[data-id='title']").textContent = "Product";
-        clone.querySelector("[data-id='content']").textContent = 
-"ID:
-NAME:
-STATUS:
-SPECIES:
-Image:";
+        clone.querySelector("[data-id='content']").textContent = "ID:";
         itemList.appendChild(clone);
     });
     document.querySelector(".btn.btn-light").addEventListener("click", event => {
