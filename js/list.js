@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
         var template = document.getElementById("list-template");
         var total = itemList.childElementCount + 1;
         var clone = template.content.cloneNode(true);
+        clone.querySelector("[data-id='number']").textContent = `${total}`;
         clone.querySelector("[data-id='ID']").textContent = "ID: ";
         clone.querySelector("[data-id='Name']").textContent = "Name: Rick Sanchez";
         clone.querySelector("[data-id='status']").textContent = "Status: Vivo";
