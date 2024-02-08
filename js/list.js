@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clone.querySelector("[data-id='Name']").textContent = "Name: Rick Sanchez";
         clone.querySelector("[data-id='status']").textContent = "Status: Vivo";
         clone.querySelector("[data-id='species']").textContent = "Species: Humano";
+        clone.querySelector("[data-id='image']").src = "https://hips.hearstapps.com/hmg-prod/images/rick-and-morty-image-1662104014.jpg?crop=0.315xw:0.560xh;0.351xw,0.168xh&resize=980:*"; 
         itemList.appendChild(clone);
     });
 
