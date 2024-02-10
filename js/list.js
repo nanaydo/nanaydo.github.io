@@ -12,7 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 var template = document.getElementById("list-template");
                 data.results.forEach(element => {
                     var clone = template.content.cloneNode(true);
-                    clone.querySelector(".col-xs-12").setAttribute("data-detail", element.id);
+                    var colElement = clone.querySelector(".col-xs-12");
+                    if (colElement) {
+                        colElement.setAttribute("data-detail", element.id);
+                    }
                     clone.querySelector("[data-id='id']").textContent = `ID: ${element.id}`;
                     clone.querySelector("[data-id='name']").textContent = `Name: ${element.name}`;
                     clone.querySelector("[data-id='status']").textContent = `Status: ${element.status}`;
