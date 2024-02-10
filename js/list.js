@@ -3,19 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch('https://rickandmortyapi.com/api/character')
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error('HTTP error! status: ${response.status}');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
-            .then((response) => {
+            .then((data) => {
                 var itemList = document.getElementById("my-list");
                 var template = document.getElementById("list-template");
-                response.results.forEach(element => {
+                data.results.forEach(element => {
                     var clone = template.content.cloneNode(true);
                     clone.querySelector(".col-xs-12").setAttribute("data-detail", element.id);
-                    clone.querySelector("[data-id='name']").textContent = element.name;
-                    clone.querySelector("[data-id='status']").textContent = element.status;
-                    clone.querySelector("[data-id='species']").textContent = element.species;
+                    clone.querySelector("[data-id='id']").textContent = `ID: ${element.id}`;
+                    clone.querySelector("[data-id='name']").textContent = `Name: ${element.name}`;
+                    clone.querySelector("[data-id='status']").textContent = `Status: ${element.status}`;
+                    clone.querySelector("[data-id='species']").textContent = `Species: ${element.species}`;
                     clone.querySelector("[data-id='image']").src = element.image;
                     itemList.appendChild(clone);
                 });
@@ -27,8 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".btn.btn-light").addEventListener("click", event => {
         var itemList = document.getElementById("my-list");
-        itemList.replaceChildren();
+        itemList.innerHTML = ''; // Limpiar la lista
     });
 });
-
-
