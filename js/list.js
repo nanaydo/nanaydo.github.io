@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".btn.btn-primary").addEventListener("click", event => {
+        fetch('https://rickandmortyapi.com/api/character').then((response) =>{
+            if(response.ok){
+                
+
+        
         var itemList = document.getElementById("my-list");
         var template = document.getElementById("list-template");
         var total = itemList.childElementCount + 1;
         var clone = template.content.cloneNode(true);
         clone.querySelector("[data-id='number']").textContent = `${total}`;
-        clone.querySelector("[data-id='ID']").textContent = "ID: ";
-        clone.querySelector("[data-id='Name']").textContent = "Name: Rick Sanchez";
-        clone.querySelector("[data-id='status']").textContent = "Status: Vivo";
-        clone.querySelector("[data-id='species']").textContent = "Species: Humano";
+        clone.querySelector("[data-id='Id']").textContent = "Id: ";
+        clone.querySelector("[data-id='name']").textContent = "Name: Rick Sanchez";
+        clone.querySelector("[data-id='status']").textContent = "status: Vivo";
+        clone.querySelector("[data-id='species']").textContent = "species: Humano";
         clone.querySelector("[data-id='image']").src = "https://hips.hearstapps.com/hmg-prod/images/rick-and-morty-image-1662104014.jpg?crop=0.315xw:0.560xh;0.351xw,0.168xh&resize=980:*"; 
         itemList.appendChild(clone);
     });
