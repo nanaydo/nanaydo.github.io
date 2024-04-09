@@ -1,3 +1,10 @@
+<?php
+// Incluir el archivo de validación de sesión
+require_once 'validar_sesion.php';
+
+// Llamar a la función para validar la sesión
+validarSesion();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,8 +45,8 @@
     <h1>SPARTAN - Halo</h1>
     <nav>
         <ul>
-            <li><a href="pagina1.html">Página 1</a></li>
-            <li><a href="pagina2.html">Página 2</a></li>
+            <li><a href="Pagina1.php">Página 1</a></li>
+            <li><a href="Pagina2.php">Página 2</a></li>
         </ul>
     </nav>
 </header>
