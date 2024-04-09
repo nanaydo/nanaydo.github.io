@@ -1,9 +1,12 @@
 <?php
-// Iniciar sesión
-session_start();
+// Incluir el archivo de validación de sesión
+require_once 'validar_sesion.php';
+
+// Llamar a la función para validar la sesión
+validarSesion();
 
 // Verificar si el usuario ha iniciado sesión y es administrador
-if (!isset($_SESSION['id']) || $_SESSION['role'] !== 'admin') {
+if ($_SESSION['role'] !== 'admin') {
     // Si no es administrador, redireccionar a la página de inicio
     header("Location: index.php");
     exit();
