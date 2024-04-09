@@ -42,7 +42,7 @@ function validarSesion() {
         // Verificar si se encontró el usuario en la base de datos
         if ($result->num_rows == 0) {
             // Usuario no encontrado, redirigir al inicio de sesión
-            header("Location: login.php");
+            header("Location: Inicio.php");
             exit();
         }
 
@@ -55,7 +55,7 @@ function validarSesion() {
         $conn->close();
     } else {
         // ID o correo electrónico no encontrados en la sesión, redirigir al inicio de sesión
-        header("Location: login.php");
+        header("Location: Inicio.php");
         exit();
     }
 }
