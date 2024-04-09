@@ -8,7 +8,7 @@ validarSesion();
 // Verificar si el usuario ha iniciado sesión y es administrador
 if ($_SESSION['role'] !== 'admin') {
     // Si no es administrador, redireccionar a la página de inicio
-    header("Location: index.php");
+    header("Location: inicio.php");
     exit();
 }
 
