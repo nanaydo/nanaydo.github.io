@@ -2,416 +2,174 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seccion Desplegable</title>
-    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-*::after,
-*::before,
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: #ffcba4;
-}
-
-body {
-    margin: 0 auto;
-    max-width: 1200px;
-    font-family: 'Lato';
-    color: black;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 0 40px 0;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.wrap {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
-}
-
-.main {
-    width: 100%;
-    min-height: 1500px;
-}
-
-.seccionToggle {
-    display: none;
-    height: calc(100vh - 50px);
-    background: #fff;
-    color: #001F3F;
-    padding: 50px 0;
-    text-align: center;
-}
-
-.seccionToggle h2 {
-    font-size: 60px;
-    margin-top: 50px;
-}
-
-.seccionToggle p {
-    font-size: 20px;
-    margin-bottom: center;
-}
-
-.seccionToggle button {
-    background: none;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 20px 40px;
-    display: inline-block;
-    border: 5px solid #001F3F;
-    transition: 0.3s all ease;
-}
-
-.seccionToggle button:hover {
-    border: 5px solid pink;
-    color: hotpink;
-}
-
-.btn-toggle {
-    height: 50px;
-    line-height: 50px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #000;
-    display: block;
-    background: #FFDC00;
-    text-align: center;
-}
-
-.btn-toggle:hover {
-    text-decoration: none;
-}
-
-.count-products {
-    position: absolute;
-    top: 55%;
-    right: 0;
-    background-color: blackorange;
-    color: white;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-}
-
-#contador-productos {
-    font-size: 12px;
-}
-
-.container-cart-products {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background: rgb(255, 111, 0);
-    background: radial-gradient(circle, rgba(255, 111, 0, 1) 23%, rgba(245, 255, 0, 1) 100%);
-    width: 400px;
-    z-index: 1;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
-    border-radius: 10px;
-}
-
-.search-bar {
-    margin: auto;
-    width: 50%;
-    background: transparent;
-    padding: 9px 22px 9px 20px;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.cart-product {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
-}
-
-.info-cart-product {
-    display: flex;
-    justify-content: space-between;
-    flex: 0.8;
-}
-
-.titulo-producto-carrito {
-    font-size: 20px;
-}
-
-.precio-producto-carrito {
-    font-weight: 700;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.cantidad-producto-carrito {
-    font-weight: 400;
-    font-size: 20px;
-}
-
-.icon-close {
-    width: 25px;
-    height: 25px;
-}
-
-.icon-close:hover {
-    stroke: orange;
-    cursor: pointer;
-}
-
-.cart-total {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-    gap: 20px;
-}
-
-.cart-total h3 {
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.total-pagar {
-    font-size: 20px;
-    font-weight: 900;
-}
-
-.hidden-cart {
-    display: none;
-}
-
-.container-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.item {
-    border-radius: 10px;
-}
-
-.item:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
-}
-
-.item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-    transition: all .5s;
-}
-
-.item figure {
-    overflow: hidden;
-}
-
-.item:hover img {
-    transform: scale(1.2);
-}
-
-.info-product {
-    padding: 15px 30px;
-    line-height: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.price {
-    font-size: 18px;
-    font-weight: 900;
-}
-
-.info-product button {
-    border: none;
-    background: none;
-    background: rgb(255, 111, 0);
-    background: linear-gradient(90deg, rgba(255, 111, 0, 1) 23%, rgba(245, 255, 0, 1) 100%);
-    color: #fff;
-    padding: 15px 10px;
-    cursor: pointer;
-}
-
-.cart-empty {
-    padding: 20px;
-    text-align: center;
-}
-
-.hidden {
-    display: none;
-}
-
-.ir-arriba {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    background-color: #ffe180;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.ir-arriba:hover {
-    background-color: orangered;
-}
-</style>
-        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #ffcba4;
+        }
+        .btn-toggle {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            background: #FFDC00;
+            text-align: center;
+            cursor: pointer;
+        }
+        .count-products {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: orange;
+            color: white;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+        .container-cart-products {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: rgb(255, 111, 0);
+            background: radial-gradient(circle, rgba(255, 111, 0, 1) 23%, rgba(245, 255, 0, 1) 100%);
+            width: 400px;
+            z-index: 1;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+            border-radius: 10px;
+        }
+        .ir-arriba {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            background-color: #ffe180;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .ir-arriba:hover {
+            background-color: orangered;
+        }
+        .item img {
+            transition: all .5s;
+        }
+        .item:hover img {
+            transform: scale(1.2);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
-    
-    <section class="seccionToggle">
-        <div class="wrap">
+    <section class="seccionToggle d-none bg-white text-primary py-5 text-center">
+        <div class="container">
             <h2>Estamos para darte el mejor servicio</h2>
             <p>comunicate con nosotros</p>
-            <button>
-                <a href="https://www.facebook.com/">Siguenos!</a>
+            <button class="btn btn-outline-primary">
+                <a href="https://www.facebook.com/" class="text-primary">Siguenos!</a>
             </button>
-            <div id="myDiv"></div>
         </div>
     </section>
 
-    <a href="#" id="btn-toggle" class="btn-toggle">Abrir</a>
+    <a href="#" id="btn-toggle" class="btn-toggle d-block p-2 my-2">Abrir</a>
 
     <div class="main">
-        <div class="wrap">
-            <input type="search" class="search-bar" placeholder="Buscar productos">
-            <header>
+        <div class="container">
+            <input type="search" class="form-control my-3 search-bar" placeholder="Buscar productos">
+            <header class="d-flex justify-content-between align-items-center">
                 <h1>Heladeria</h1>
-
-                <div class="container-icon">
+                <div class="container-icon position-relative">
                     <div class="container-cart-icon">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="icon-cart"
-                            style="width: 40px; height: 40px; stroke: #000; cursor: pointer; position: relative;"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                            />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon-cart" style="width: 40px; height: 40px; cursor: pointer;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
                         </svg>
                         <div class="count-products">
                             <span id="contador-productos">0</span>
                         </div>
                     </div>
-
-                    <div class="container-cart-products hidden-cart">
-                        <div class="row-product hidden">
+                    <div class="container-cart-products d-none">
+                        <div class="row-product d-none">
                             <div class="cart-product">
-                                <div class="info-cart-product">
+                                <div class="info-cart-product d-flex justify-content-between">
                                     <span class="cantidad-producto-carrito">1</span>
                                     <p class="titulo-producto-carrito">Helado Vegano</p>
                                     <span class="precio-producto-carrito">$80</span>
                                 </div>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="icon-close"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon-close" style="width: 25px; height: 25px; cursor: pointer;">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
                                 </svg>
                             </div>
                         </div>
-
-                        <div class="cart-total hidden">
+                        <div class="cart-total d-none d-flex justify-content-between align-items-center p-3">
                             <h3>Total:</h3>
                             <span class="total-pagar">$200</span>
                         </div>
-                        <p class="cart-empty">El carrito está vacío</p>
+                        <p class="cart-empty text-center">El carrito está vacío</p>
                     </div>
                 </div>
             </header>
-            <div class="container-items">
-                <div class="item">
+            <div class="container-items row">
+                <div class="item col-md-4 mb-4">
                     <figure>
-                        <img src="producto5.jpg" style="max-width: 100%;">
+                        <img src="producto5.jpg" class="img-fluid">
                     </figure>
-                    <div class="info-product">
+                    <div class="info-product text-center">
                         <h2>Helado Vegano</h2>
                         <p class="price">$80</p>
-                        <button class="btn-add-cart">Añadir al carrito</button>
+                        <button class="btn btn-warning btn-add-cart">Añadir al carrito</button>
                     </div>
                 </div>
-
-                <div class="item">
+                <div class="item col-md-4 mb-4">
                     <figure>
-                        <img src="producto4.jpg" style="max-width: 100%;">
+                        <img src="producto4.jpg" class="img-fluid">
                     </figure>
-                    <div class="info-product">
+                    <div class="info-product text-center">
                         <h2>Mordisko</h2>
                         <p class="price">$20</p>
-                        <button class="btn-add-cart">Añadir al carrito</button>
+                        <button class="btn btn-warning btn-add-cart">Añadir al carrito</button>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item col-md-4 mb-4">
                     <figure>
-                        <img src="producto3.jpg" style="max-width: 100%;">
+                        <img src="producto3.jpg" class="img-fluid">
                     </figure>
-                    <div class="info-product">
+                    <div class="info-product text-center">
                         <h2>Helado Napolitano</h2>
                         <p class="price">$50</p>
-                        <button class="btn-add-cart">Añadir al carrito</button>
+                        <button class="btn btn-warning btn-add-cart">Añadir al carrito</button>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item col-md-4 mb-4">
                     <figure>
-                        <img src="producto2.jpg" style="max-width: 100%;">
+                        <img src="producto2.jpg" class="img-fluid">
                     </figure>
-                    <div class="info-product">
+                    <div class="info-product text-center">
                         <h2>Helado Chispas chocolate</h2>
                         <p class="price">$90</p>
-                        <button class="btn-add-cart">Añadir al carrito</button>
+                        <button class="btn btn-warning btn-add-cart">Añadir al carrito</button>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item col-md-4 mb-4">
                     <figure>
-                        <img src="producto1.jpg" style="max-width: 100%;">
+                        <img src="producto1.jpg" class="img-fluid">
                     </figure>
-                    <div class="info-product">
+                    <div class="info-product text-center">
                         <h2>Helado Vainilla</h2>
                         <p class="price">$50</p>
-                        <button class="btn-add-cart">Añadir al carrito</button>
+                        <button class="btn btn-warning btn-add-cart">Añadir al carrito</button>
                     </div>
                 </div>
             </div>
-            <div class="search-results">
-            </div>
+            <div class="search-results"></div>
         </div>
         <a href="#" class="ir-arriba" title="Volver arriba">
             <span class="fa-stack">
@@ -425,86 +183,80 @@ a:hover {
         const containerCartProducts = document.querySelector('.container-cart-products');
 
         btnCart.addEventListener('click', () => {
-            containerCartProducts.classList.toggle('hidden-cart');
+            containerCartProducts.classList.toggle('d-none');
         });
 
-        /* ========================= */
         const cartInfo = document.querySelector('.cart-product');
         const rowProduct = document.querySelector('.row-product');
-
-        // Lista de todos los contenedores de productos
         const productsList = document.querySelector('.container-items');
-
-        // Variable de arreglos de Productos
-        let allProducts = [];
-
-        const valorTotal = document.querySelector('.total-pagar');
-
+        const totalValue = document.querySelector('.total-pagar');
         const countProducts = document.querySelector('#contador-productos');
-
         const cartEmpty = document.querySelector('.cart-empty');
         const cartTotal = document.querySelector('.cart-total');
+
+        let allProducts = [];
 
         productsList.addEventListener('click', e => {
             if (e.target.classList.contains('btn-add-cart')) {
                 const product = e.target.parentElement;
+                const productName = product.querySelector('h2').textContent;
+                const productPrice = product.querySelector('p').textContent;
 
-                const infoProduct = {
-                    quantity: 1,
-                    title: product.querySelector('h2').textContent,
-                    price: product.querySelector('p').textContent,
+                const newProduct = {
+                    name: productName,
+                    price: productPrice,
+                    quantity: 1
                 };
 
-                const exits = allProducts.some(
-                    product => product.title === infoProduct.title
-                );
-
-                if (exits) {
-                    const products = allProducts.map(product => {
-                        if (product.title === infoProduct.title) {
-                            product.quantity++;
-                            return product;
-                        } else {
-                            return product;
-                        }
-                    });
-                    allProducts = [...products];
-                } else {
-                    allProducts = [...allProducts, infoProduct];
-                }
-
-                showHTML();
+                addProductToCart(newProduct);
             }
         });
 
         rowProduct.addEventListener('click', e => {
             if (e.target.classList.contains('icon-close')) {
                 const product = e.target.parentElement;
-                const title = product.querySelector('p').textContent;
+                const productName = product.querySelector('p').textContent;
 
-                allProducts = allProducts.filter(
-                    product => product.title !== title
-                );
-
-                console.log(allProducts);
-
-                showHTML();
+                removeProductFromCart(productName);
             }
         });
 
-        // Funcion para mostrar  HTML
-        const showHTML = () => {
-            if (!allProducts.length) {
-                cartEmpty.classList.remove('hidden');
-                rowProduct.classList.add('hidden');
-                cartTotal.classList.add('hidden');
+        function addProductToCart(product) {
+            const productExists = allProducts.some(prod => prod.name === product.name);
+
+            if (productExists) {
+                const products = allProducts.map(prod => {
+                    if (prod.name === product.name) {
+                        prod.quantity++;
+                        return prod;
+                    } else {
+                        return prod;
+                    }
+                });
+                allProducts = [...products];
             } else {
-                cartEmpty.classList.add('hidden');
-                rowProduct.classList.remove('hidden');
-                cartTotal.classList.remove('hidden');
+                allProducts = [...allProducts, product];
             }
 
-            // Limpiar HTML
+            updateCart();
+        }
+
+        function removeProductFromCart(productName) {
+            allProducts = allProducts.filter(product => product.name !== productName);
+            updateCart();
+        }
+
+        function updateCart() {
+            if (allProducts.length > 0) {
+                rowProduct.classList.remove('d-none');
+                cartTotal.classList.remove('d-none');
+                cartEmpty.classList.add('d-none');
+            } else {
+                rowProduct.classList.add('d-none');
+                cartTotal.classList.add('d-none');
+                cartEmpty.classList.remove('d-none');
+            }
+
             rowProduct.innerHTML = '';
 
             let total = 0;
@@ -512,106 +264,71 @@ a:hover {
 
             allProducts.forEach(product => {
                 const containerProduct = document.createElement('div');
-                containerProduct.classList.add('cart-product');
-
+                containerProduct.classList.add('cart-product', 'd-flex', 'justify-content-between', 'align-items-center', 'p-3');
                 containerProduct.innerHTML = `
                     <div class="info-cart-product">
                         <span class="cantidad-producto-carrito">${product.quantity}</span>
-                        <p class="titulo-producto-carrito">${product.title}</p>
+                        <p class="titulo-producto-carrito">${product.name}</p>
                         <span class="precio-producto-carrito">${product.price}</span>
                     </div>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="icon-close"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                        />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="icon-close" style="width: 25px; height: 25px; cursor: pointer;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 `;
 
                 rowProduct.append(containerProduct);
 
-                total =
-                    total + parseInt(product.quantity * product.price.slice(1));
-                totalOfProducts = totalOfProducts + product.quantity;
+                total += parseInt(product.quantity * product.price.slice(1));
+                totalOfProducts += product.quantity;
             });
 
-            valorTotal.innerText = `$${total}`;
+            totalValue.innerText = `$${total}`;
             countProducts.innerText = totalOfProducts;
-        };
+        }
 
-        const searchBar = document.querySelector('.search-bar');
-        const searchResults = document.querySelector('.search-results');
+        $(document).ready(function () {
+            $("#btn-toggle").click(function (event) {
+                event.preventDefault();
+                $(".seccionToggle").toggleClass("d-none");
+            });
 
-        searchBar.addEventListener('input', () => {
-            const searchTerm = searchBar.value.toLowerCase();
+            $(".ir-arriba").click(function () {
+                $("body, html").animate({
+                    scrollTop: "0px"
+                }, 300);
+            });
 
-            const productItems = document.querySelectorAll('.item');
-
-            productItems.forEach(item => {
-                const title = item.querySelector('h2').textContent.toLowerCase();
-                const description = item.querySelector('p').textContent.toLowerCase();
-
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    item.classList.remove('hidden');
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 0) {
+                    $(".ir-arriba").fadeIn(300);
                 } else {
-                    item.classList.add('hidden');
+                    $(".ir-arriba").fadeOut(300);
                 }
+            });
+
+            $(".search-bar").on("input", function () {
+                const value = $(this).val().toLowerCase();
+                $(".container-items .item").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
             });
         });
 
-        // Manejo de eventos KeyPress para scroll
+      
         document.addEventListener('keypress', (event) => {
             const key = event.key.toLowerCase();
 
             switch (key) {
                 case 'w':
-                    window.scrollBy(0, -50); // Subir
+                    window.scrollBy(0, -50); 
                     break;
                 case 's':
-                    window.scrollBy(0, 50); // Bajar
+                    window.scrollBy(0, 50); 
                     break;
                 default:
-                    // Otras teclas no tienen acción específica
+                  
                     break;
             }
-        });
-
-        $(document).ready(function(){
-            var estado = false;
-
-            $('#btn-toggle').on('click',function(){
-                $('.seccionToggle').slideToggle();
-
-                if (estado == true) {
-                    $(this).text("Abrir");
-                    $('body').css({
-                        "overflow": "auto"
-                    });
-                    estado = false;
-                } else {
-                    $(this).text("Cerrar");
-                    $('body').css({
-                        "overflow": "hidden"
-                    });
-                    estado = true;
-                }
-            });
-
-            $(window).scroll(function(){
-                if ($(this).scrollTop() > 0) {
-                    $('.ir-arriba').fadeIn();
-                } else {
-                    $('.ir-arriba').fadeOut();
-                }
-            });
         });
     </script>
 </body>
